@@ -7,7 +7,7 @@ import { SkriptExpressionDivider } from "./SkriptExpressionDivider";
 
 export type SkriptExpressionType = "combination" | "alternation" | "optional";
 
-export interface SkriptExpressionMatchingSettings {
+export interface MatchingSettings {
     case_sensitive: boolean,
     strict_matching: boolean
 };
@@ -26,7 +26,7 @@ export class SkriptExpression {
         this.object_childrens = this.evaluate_components();
     }
 
-    public matches_begin_string(string: string, settings: SkriptExpressionMatchingSettings): {string_length: number, expression_length: number} {
+    public matches_begin_string(string: string, settings: MatchingSettings): {string_length: number, expression_length: number} {
         // no child fields, try to match itself
         if (this.object_childrens.length <= 0) {
             switch (this.object_type) {
